@@ -659,7 +659,7 @@
   <section class="survey-section">
     <div class="survey-inner">
       <h2 class="survey-title">Підтвердіть участь</h2>
-      <p class="survey-sub">Будь ласка, заповніть до 10 серпня 2026</p>
+      <p class="survey-sub">Будь ласка, заповніть до 10 серпня 2025</p>
 
       <div id="surveyForm">
 
@@ -667,12 +667,12 @@
           <label class="form-label">Чи будете ви присутні?</label>
           <div class="radio-group">
             <label class="radio-option">
-              <input type="radio" name="attendance" value="Так">
+              <input type="radio" name="attendance" value="Так, з радістю!">
               <span>🥂 Так, з радістю!</span>
             </label>
             <label class="radio-option">
-              <input type="radio" name="attendance" value="Ні">
-              <span>😔 На жаль, ні</span>
+              <input type="radio" name="attendance" value="На жаль, не зможемо">
+              <span>😔 На жаль, не зможемо</span>
             </label>
           </div>
         </div>
@@ -681,62 +681,41 @@
           <label class="form-label">А на вінчання прийдете👉👈?</label>
           <div class="radio-group">
             <label class="radio-option">
-              <input type="radio" name="weddingattendance" value="Так">
-              <span>🕊️ Так, з радістю!</span>
+              <input type="radio" name="weddingattendance" value="Так, будемо!">
+              <span>🕊️ Так, будемо!</span>
             </label>
             <label class="radio-option">
-              <input type="radio" name="weddingattendance" value="Ні">
-              <span>😔 Ні (беру гріх на душу)</span>
+              <input type="radio" name="weddingattendance" value="Ні, не зможемо">
+              <span>😔 Ні, не зможемо</span>
             </label>
           </div>
         </div>
 
         <div class="form-group">
-          <label class="form-label">Ваші вподобання щодо напоїв: <br>P.S. Можна декілька варіантів, гуляти так гуляти!🥴</label>
+          <label class="form-label">Харчові обмеження або алергії</label>
           <div class="radio-group">
             <label class="radio-option">
-              <input type="checkbox" name="food" value="Не вживаю алкоголь">
-              <span>Не вживаю алкоголь (як і Тарас)</span>
+              <input type="checkbox" name="food" value="Немає">
+              <span>Немає</span>
             </label>
             <label class="radio-option">
-              <input type="checkbox" name="food" value="Ігристе">
-              <span>Ігристе</span>
+              <input type="checkbox" name="food" value="Вегетаріанське меню">
+              <span>🌿 Вегетаріанське меню</span>
             </label>
             <label class="radio-option">
-              <input type="checkbox" name="food" value="Вино біле сухе">
-              <span>Вино біле сухе</span>
+              <input type="checkbox" name="food" value="Веганське меню">
+              <span>🌱 Веганське меню</span>
             </label>
             <label class="radio-option">
-              <input type="checkbox" name="food" value="Вино біле напівсолодке">
-              <span>Вино біле напівсолодке</span>
-            </label>
-			  <label class="radio-option">
-              <input type="checkbox" name="food" value="Вино червоне сухе">
-              <span>Вино червоне сухе</span>
-            </label>
-			  <label class="radio-option">
-              <input type="checkbox" name="food" value="Вино червоне напівсолодке">
-              <span>Вино червоне напівсолодке</span>
-            </label>
-			  </label>
-			  <label class="radio-option">
-              <input type="checkbox" name="food" value="Пиво">
-              <span>Пиво</span>
-            </label>
-			  <label class="radio-option">
-              <input type="checkbox" name="food" value="Сидр">
-              <span>Сидр</span>
-            </label>
-			  <label class="radio-option">
-              <input type="checkbox" name="food" value="Коктейлі">
-              <span>Кілька коктейлів на вибір (Катя обіцяє, що окрім Негроні буде ще щось)</span>
+              <input type="checkbox" name="food" value="Безглютенове">
+              <span>🌾 Безглютенове</span>
             </label>
           </div>
         </div>
 
         <div class="form-group">
-          <label class="form-label" for="wish">Місце для анекдоту</label>
-          <textarea class="form-textarea" id="wish" rows="3" placeholder="Зібрались одного разу..."></textarea>
+          <label class="form-label" for="wish">Побажання молодятам</label>
+          <textarea class="form-textarea" id="wish" rows="3" placeholder="Ваші щирі слова…"></textarea>
         </div>
 
         <button class="submit-btn" id="submitBtn" onclick="submitForm()">
@@ -801,7 +780,27 @@
 
     // ── Google Sheets via Apps Script ──
     // 🔧 ВСТАВТЕ СЮДИ URL вашого Web App (Google Apps Script)
-    const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbw5WTlhyIbiu6xVkK7_Q6X6q9AwnYrUb2Mypm-EjKV3Li7BPUNIckjiBP-J4QPI4W1X/exec';
+    const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec';
+
+    // ── Визначаємо гостя за шляхом URL ──
+    // Наприклад: https://tarasnorm.github.io/Roma_Tasya/  →  "Roma_Tasya"
+    // Наприклад: https://tarasnorm.github.io/Ivan_Petrenko/  →  "Ivan_Petrenko"
+    function getGuestId() {
+      // pathname виглядає як "/Roma_Tasya/" або "/Roma_Tasya/index.html"
+      const segments = window.location.pathname
+        .split('/')
+        .filter(Boolean); // прибираємо порожні частини від зайвих слешів
+
+      if (segments.length === 0) return 'Невідомо';
+
+      // Беремо перший сегмент шляху (назву репозиторію/папки гостя)
+      let guest = decodeURIComponent(segments[0]);
+
+      // Якщо це файл типу index.html, а не назва папки — теж підстрахуємось
+      if (guest.includes('.html')) guest = 'Невідомо';
+
+      return guest;
+    }
 
     async function submitForm() {
       const btn = document.getElementById('submitBtn');
@@ -826,10 +825,20 @@
       btn.textContent = 'Надсилаємо…';
       msg.className = 'form-message';
 
-      const payload = new URLSearchParams({ attendance, weddingattendance, food, wish,
+      const guest = getGuestId();
+
+      const payload = new URLSearchParams({ guest, attendance, weddingattendance, food, wish,
                                             timestamp: new Date().toLocaleString('uk-UA') });
       try {
-        await fetch(APPS_SCRIPT_URL, { method: 'POST', body: payload });
+        // 'no-cors' — Google Apps Script не повертає CORS-заголовки,
+        // тому браузер не дозволяє прочитати відповідь. Але запит
+        // все одно доходить і рядок додається в таблицю. Без цього
+        // режиму fetch кидає помилку, навіть якщо все відправилось успішно.
+        await fetch(APPS_SCRIPT_URL, {
+          method: 'POST',
+          mode: 'no-cors',
+          body: payload
+        });
         msg.className = 'form-message success';
         msg.textContent = '✨ Дякуємо! Ваша відповідь отримана. Чекаємо на вас!';
         document.getElementById('surveyForm').querySelectorAll('input, textarea').forEach(el => {
@@ -837,6 +846,8 @@
           else el.value = '';
         });
       } catch (e) {
+        // Сюди потрапляємо лише якщо запит взагалі не пішов
+        // (немає інтернету, невірний URL скрипта тощо)
         msg.className = 'form-message error';
         msg.textContent = 'Помилка з\'єднання. Спробуйте ще раз або напишіть нам особисто.';
         btn.disabled = false;
