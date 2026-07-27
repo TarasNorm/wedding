@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
+  <meta name="theme-color" content="#1a1208">
+  <title>Запрошення на Весілля</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🕊️</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://images.unsplash.com">
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=EB+Garamond:ital@0;1&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --cream: #f5f0e8;
+      --ivory: #faf7f2;
+      --gold: #c9a84c;
+      --gold-light: #e8d5a3;
+      --gold-dark: #8b6914;
+      --dark: #1a1208;
+      --text: #2e2212;
+      --text-light: #6b5a3e;
+      --rose: #c4857a;
+      --vh100: 100vh;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--cream);
+      color: var(--text);
+      font-family: 'EB Garamond', Georgia, serif;
+      overflow-x: hidden;
+      touch-action: manipulation;
+    }
+
+    .hero {
+      position: relative;
+      height: var(--vh100);
+      height: 100svh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(26,18,8,0.7) 0%, rgba(26,18,8,0.55) 50%, rgba(26,18,8,0.8) 100%),
+        url('/wedding/images/hedding.jpg') center/cover no-repeat;
+      transform: translateZ(0) scale(1.05);
+      will-change: transform;
+    }
+
+    .hero-content {
+      position: relative;
+      text-align: center;
+      padding: 2rem;
+      animation: fadeInUp 1.4s ease both;
+    }
+
+    .hero-pre {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: clamp(1rem, 2.5vw, 1.4rem);
+      letter-spacing: 0.35em;
+      color: var(--ivory);
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-title {
+      font-family: 'Great Vibes', cursive;
+      font-size: clamp(3.5rem, 10vw, 8rem);
+      font-weight: 400;
+      color: var(--ivory);
+      letter-spacing: 0.04em;
+      line-height: 1.1;
+      text-shadow: 0 4px 40px rgba(0,0,0,0.4);
+    }
+
+    .hero-title span { display: block; color: var(--gold); }
+
+    .divider {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin: 1.8rem auto;
+      width: fit-content;
+    }
+    .divider-line { width: 80px; height: 1px; background: var(--gold); opacity: 0.7; }
+    .divider-diamond { width: 8px; height: 8px; border: 1px solid var(--gold); transform: rotate(45deg); }
+
+    .hero-date {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+      color: var(--ivory);
+      letter-spacing: 0.3em;
+    }
+
+    .scroll-hint {
+      position: absolute;
+      bottom: 2.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--gold-light);
+      font-size: 0.75rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      animation: pulse 2.5s infinite;
+    }
+    .scroll-hint::after {
+      content: '';
+      width: 1px;
+      height: 40px;
+      background: linear-gradient(to bottom, var(--gold-light), transparent);
+    }
+
+    .sticky-section { display: flex; min-height: 100vh; position: relative; }
+
+    .sticky-section.left-image .sticky-image-col {
+      position: sticky; top: 0; width: 50%; height: 100vh; flex-shrink: 0; overflow: hidden;
+    }
+    .sticky-section.left-image .scroll-text-col {
+      width: 50%; padding: 10vh 6vw 15vh 6vw; background: var(--ivory);
+    }
+    .sticky-section.right-image .scroll-text-col {
+      width: 50%; padding: 10vh 6vw 15vh 6vw; background: var(--ivory); order: 1;
+    }
+    .sticky-section.right-image .sticky-image-col {
+      position: sticky; top: 0; width: 50%; height: 100vh; flex-shrink: 0; overflow: hidden; order: 2;
+    }
+    .sticky-image-col img { width: 100%; height: 100%; object-fit: cover; }
+
+    .section-eyebrow {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1rem;
+      letter-spacing: 0.3em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    .section-heading {
+      font-family: 'Great Vibes', cursive;
+      font-size: clamp(2.2rem, 4vw, 3.8rem);
+      font-weight: 400;
+      line-height: 1.2;
+      color: var(--dark);
+      margin-bottom: 1.5rem;
+    }
+
+    .section-divider { width: 60px; height: 1px; background: var(--gold); margin: 1.5rem 0; }
+
+    .section-body {
+      font-size: clamp(1rem, 1.5vw, 1.2rem);
+      line-height: 1.9;
+      color: var(--text-light);
+      margin-bottom: 1.5rem;
+    }
+
+    .info-block {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      margin: 1.5rem 0;
+      padding: 1.5rem;
+      border-left: 2px solid var(--gold);
+      background: rgba(201,168,76,0.06);
+    }
+    .info-block .icon { font-size: 1.5rem; flex-shrink: 0; }
+    .info-block h4 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 1.3rem;
+      letter-spacing: 0.05em;
+      color: var(--gold-dark);
+      margin-bottom: 0.3rem;
+    }
+    .info-block p { font-size: 1rem; color: var(--text-light); line-height: 1.6; }
+
+    .survey-section { background: var(--dark); padding: 10vh 5vw; position: relative; overflow: hidden; }
+    .survey-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 50% at 20% 50%, rgba(201,168,76,0.08) 0%, transparent 70%),
+        radial-gradient(ellipse 50% 60% at 80% 30%, rgba(196,133,122,0.06) 0%, transparent 70%);
+    }
+    .survey-inner { position: relative; max-width: 680px; margin: 0 auto; }
+    .survey-title {
+      font-family: 'Great Vibes', cursive;
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      color: var(--ivory);
+      text-align: center;
+      margin-bottom: 0.5rem;
+    }
+    .survey-sub {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.1rem;
+      color: var(--gold-light);
+      text-align: center;
+      letter-spacing: 0.1em;
+      margin-bottom: 3rem;
+    }
+
+    .form-group { margin-bottom: 1.8rem; }
+    .form-label {
+      display: block;
+      font-family: 'Great Vibes', cursive;
+      font-size: 1.2rem;
+      letter-spacing: 0.05em;
+      color: var(--gold);
+      margin-bottom: 0.6rem;
+    }
+
+    .form-input, .form-select, .form-textarea {
+      width: 100%;
+      padding: 0.9rem 1.2rem;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(201,168,76,0.3);
+      border-radius: 2px;
+      color: var(--ivory);
+      font-family: 'EB Garamond', serif;
+      font-size: 16px;
+      transition: border-color 0.3s, background 0.3s;
+      outline: none;
+    }
+    .form-input:focus, .form-select:focus, .form-textarea:focus {
+      border-color: var(--gold);
+      background: rgba(255,255,255,0.08);
+    }
+    .form-select option { background: var(--dark); }
+
+    .radio-group { display: flex; flex-direction: column; gap: 0.7rem; }
+    .radio-option {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      padding: 0.8rem 1.2rem;
+      min-height: 44px;
+      border: 1px solid rgba(201,168,76,0.2);
+      cursor: pointer;
+      transition: border-color 0.3s, background 0.3s;
+      -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
+    }
+    .radio-option:hover, .radio-option:active {
+      border-color: var(--gold);
+      background: rgba(201,168,76,0.05);
+    }
+    .radio-option input[type="radio"],
+    .radio-option input[type="checkbox"] {
+      accent-color: var(--gold);
+      width: 20px; height: 20px;
+      flex-shrink: 0;
+    }
+    .radio-option span { color: var(--ivory); font-size: 1rem; }
+
+    .submit-btn {
+      width: 100%;
+      padding: 1.1rem 2rem;
+      min-height: 52px;
+      background: transparent;
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      font-family: 'Great Vibes', cursive;
+      font-size: 1.4rem;
+      letter-spacing: 0.1em;
+      cursor: pointer;
+      transition: background 0.4s, color 0.4s;
+      margin-top: 1rem;
+      -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
+    }
+    .submit-btn:hover, .submit-btn:active { background: var(--gold); color: var(--dark); }
+    .submit-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+    .form-message {
+      margin-top: 1rem;
+      padding: 1rem;
+      text-align: center;
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.1rem;
+      display: none;
+    }
+    .form-message.success { color: var(--gold-light); border: 1px solid rgba(201,168,76,0.3); display: block; }
+    .form-message.error { color: var(--rose); border: 1px solid rgba(196,133,122,0.3); display: block; }
+
+    footer {
+      background: var(--dark);
+      border-top: 1px solid rgba(201,168,76,0.2);
+      padding: 3rem 2rem;
+      text-align: center;
+    }
+    footer p {
+      font-family: 'Great Vibes', cursive;
+      color: var(--gold-light);
+      font-size: 1.4rem;
+      letter-spacing: 0.05em;
+    }
+
+    @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+
+    .fade-in-up { opacity: 0; transform: translateY(24px); transition: opacity 0.8s ease, transform 0.8s ease; }
+    .fade-in-up.visible { opacity: 1; transform: translateY(0); }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .hero-content, .fade-in-up, .scroll-hint { animation: none !important; transition: none !important; opacity: 1 !important; transform: none !important; }
+      .hero-bg { transform: none !important; }
+    }
+
+    @media (max-width: 768px) {
+      .hero-bg { background-position: 30% center; }
+
+      .sticky-section { flex-direction: column !important; }
+
+      .sticky-section.left-image .scroll-text-col,
+      .sticky-section.right-image .scroll-text-col {
+        position: relative;
+        width: 100%;
+        padding: 3rem 6vw 2.5rem 6vw;
+        order: 0 !important;
+        background: var(--ivory);
+      }
+
+      .sticky-section.left-image .sticky-image-col,
+      .sticky-section.right-image .sticky-image-col {
+        position: relative;
+        width: 100%;
+        height: 45vh;
+        flex-shrink: 0;
+        order: 1 !important;
+        z-index: 1;
+      }
+
+      .sticky-section.right-image .sticky-image-col { clip-path: none !important; }
+
+      .info-block { padding: 1.1rem; gap: 0.8rem; }
+      .form-group { margin-bottom: 1.4rem; }
+    }
+
+    @media (max-width: 360px) {
+      .hero-content { padding: 1.2rem; }
+      .divider-line { width: 50px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ═══════════ HERO ═══════════ -->
+  <section class="hero">
+    <div class="hero-bg" id="heroBg"></div>
+    <div class="hero-content">
+      <h1 class="hero-title">
+        Запрошення
+        <span>на Весілля</span>
+      </h1>
+      <div class="divider">
+        <div class="divider-line"></div>
+        <div class="divider-diamond"></div>
+        <div class="divider-line"></div>
+      </div>
+      <p class="hero-date"> · Тарасик &amp; Катруся · <br>5 Вересня 2026</p>
+    </div>
+    <div class="scroll-hint">Гортати</div>
+  </section>
+
+  <!-- ═══════════ SECTION 1 ═══════════ -->
+  <section class="sticky-section left-image">
+    <div class="sticky-image-col">
+      <img src="/wedding/images/littleus.jpg" alt="Весілля" loading="eager" decoding="async">
+    </div>
+    <div class="scroll-text-col">
+      <div class="fade-in-up">
+        <p class="section-eyebrow">Шановні гості, дорога родино</p>
+        <h2 class="section-heading">Дорогі Рома і Тася!</h2>
+        <div class="section-divider"></div>
+      </div>
+      <p class="section-body fade-in-up">Запрошуємо вас на наше весілля!</p>
+      <p class="section-body fade-in-up">
+        Нам буде дуже приємно, якщо в цей особливий для нас день ви зможете бути поруч та розділити нашу радість.
+      </p>
+      <div class="form-group"><label class="form-label"><b>5 Вересня 2026р.</b></label></div>
+      <div class="info-block fade-in-up">
+        <div class="icon">✨</div>
+        <div><h4>Збір гостей</h4><p>15:30<br>Кафе «MARKÓ», вул. Софіївська 19, Київ</p></div>
+      </div>
+      <div class="info-block fade-in-up">
+        <div class="icon">💍</div>
+        <div><h4>Церемонія</h4><p>16:00</p></div>
+      </div>
+      <div class="info-block fade-in-up">
+        <div class="icon">🥂</div>
+        <div><h4>Фуршетний стіл</h4><p>16:30</p></div>
+      </div>
+      <div class="info-block fade-in-up">
+        <div class="icon">🌿</div>
+        <div><h4>Завершення свята</h4><p>19:00</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ SECTION 2 ═══════════ -->
+  <section class="sticky-section right-image" id="rightSection">
+    <div class="scroll-text-col">
+      <div class="fade-in-up">
+        <p class="section-eyebrow">Деталі Свята</p>
+        <h2 class="section-heading">Усе, що треба знати</h2>
+        <div class="section-divider"></div>
+      </div>
+      <p class="section-body fade-in-up">
+        Для нас дуже важливо, щоб кожен гість почувався тепло і комфортно.<br>Ми підготували затишний вечір з гарною та спокійною музикою, смачною кухнею та незабутньою атмосферою.
+      </p>
+      <div class="info-block fade-in-up">
+        <div class="icon">🌿</div>
+        <div><h4>Дрескод</h4><p>Одягайтесь красиво - так, як вам відгукується, але з українським настроєм.<br>Вишиванки, силянки, гердани, крайки, хустки - усе вітається!<br>Можна міксувати з сучасним, головне - <strong>не чорний колір.</strong><br>Ми ж не на поминках, у нас свято!</p></div>
+      </div>
+      <div class="info-block fade-in-up">
+        <div class="icon">🌻</div>
+        <div><h4>Квіти</h4><p>Любі наші, просимо вас <strong>не дарувати нам квіти</strong> - натомість ми організуємо збір на підтримку на ЗСУ, що зараз є важливіше.<br>Нехай наше свято стане ще однією нагодою зробити добру справу разом.</p></div>
+      </div>
+      <div class="info-block fade-in-up">
+        <div class="icon">💕</div>
+        <div><h4>Ми не такі як всі</h4><p>Наше весілля буде трохи не таким, як зазвичай. Ми не прагнемо дотримуватися всіх традицій чи створювати гучне святкування.<br>Натомість мріємо про теплий, затишний вечір у колі найдорожчих людей.<br><strong>Цей день</strong> — про нас, нашу історію, наші почуття та людей, яких ми хочемо бачити поруч.</p></div>
+      </div>
+      <p class="section-body fade-in-up" style="margin-top:1rem; font-style:italic; color: var(--gold-dark);">
+        «Найкращий подарунок — ваша присутність і щирість»
+      </p>
+    </div>
+    <div class="sticky-image-col">
+      <img src="/wedding/images/rings.jpg" alt="Весільний банкет" loading="eager" decoding="async">
+    </div>
+  </section>
+
+  <!-- ═══════════ SURVEY ═══════════ -->
+  <section class="survey-section">
+    <div class="survey-inner">
+      <h2 class="survey-title">Підтвердіть участь</h2>
+      <p class="survey-sub">Будь ласка, заповніть до 10 серпня 2026</p>
+
+      <div id="surveyForm">
+
+        <div class="form-group">
+          <label class="form-label">Чи будете ви присутні?</label>
+          <div class="radio-group">
+            <label class="radio-option">
+              <input type="radio" name="attendance" value="Так">
+              <span>🥂 Так, з радістю!</span>
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="attendance" value="Ні">
+              <span>😔 На жаль, ні</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Ваші вподобання щодо напоїв: <br>P.S. Можна декілька варіантів, гуляти так гуляти!🥴</label>
+          <div class="radio-group">
+            <label class="radio-option">
+              <input type="checkbox" name="food" value="Не вживаю алкоголь">
+              <span>Не вживаю алкоголь (як і Тарас)</span>
+            </label>
+            <label class="radio-option">
+              <input type="checkbox" name="food" value="Ігристе">
+              <span>Ігристе</span>
+            </label>
+            <label class="radio-option">
+              <input type="checkbox" name="food" value="Вино біле сухе">
+              <span>Вино біле сухе</span>
+            </label>
+            <label class="radio-option">
+              <input type="checkbox" name="food" value="Вино біле напівсолодке">
+              <span>Вино біле напівсолодке</span>
+            </label>
+            <label class="radio-option">
+              <input type="checkbox" name="food" value="Вино червоне сухе">
+              <span>Вино червоне сухе</span>
+            </label>
+            <label class="radio-option">
+              <input type="checkbox" name="food" value="Вино червоне напівсолодке">
+              <span>Вино червоне напівсолодке</span>
+            </label>
+            <label class="radio-option">
+              <input type="checkbox" name="food" value="Пиво">
+              <span>Пиво</span>
+            </label>
+            <label class="radio-option">
+              <input type="checkbox" name="food" value="Сидр">
+              <span>Сидр</span>
+            </label>
+            <label class="radio-option">
+              <input type="checkbox" name="food" value="Коктейлі">
+              <span>Кілька коктейлів на вибір (Катя обіцяє, що окрім Негроні буде ще щось)</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="wish">Місце для анекдоту</label>
+          <textarea class="form-textarea" id="wish" rows="3" placeholder="Зібрались одного разу..."></textarea>
+        </div>
+
+        <button class="submit-btn" id="submitBtn" onclick="submitForm()">
+          Надіслати відповідь
+        </button>
+
+        <div class="form-message" id="formMessage"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ FOOTER ═══════════ -->
+  <footer>
+    <p>З любов'ю та нетерпінням чекаємо на вас · Тарасик &amp; Катруся · 5 Вересня 2026</p>
+  </footer>
+
+  <script>
+    const isSmallScreen = window.matchMedia('(max-width: 768px)').matches;
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const enableParallax = !isSmallScreen && !prefersReducedMotion;
+
+    if (enableParallax) {
+      const heroBg = document.getElementById('heroBg');
+      let ticking = false;
+      window.addEventListener('scroll', () => {
+        if (!ticking) {
+          requestAnimationFrame(() => {
+            const scrollY = window.scrollY;
+            heroBg.style.transform = `translateZ(0) scale(1.05) translateY(${scrollY * 0.3}px)`;
+            ticking = false;
+          });
+          ticking = true;
+        }
+      }, { passive: true });
+    }
+
+    const rightSection = document.getElementById('rightSection');
+    const revealObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('revealed'); });
+    }, { threshold: 0.25 });
+    revealObserver.observe(rightSection);
+
+    const fadeEls = document.querySelectorAll('.fade-in-up');
+    const fadeObserver = new IntersectionObserver(entries => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          entry.target.style.transitionDelay = `${i * 0.07}s`;
+          entry.target.classList.add('visible');
+          fadeObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    fadeEls.forEach(el => fadeObserver.observe(el));
+
+    // ── Google Sheets via Apps Script ──
+    const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxmgy_lMzc9rrJ6IuNOHzSGh3RVsPFwFAYDkR08qa0cnf04Rpu10qG_Da-PPyhbmOCW/exec';
+
+    // ── Визначаємо гостя за шляхом URL ──
+    // Приклад: https://tarasnorm.github.io/wedding/Roma_Tasya/  →  "Roma_Tasya"
+    // Бере ОСТАННІЙ сегмент шляху — тому працює незалежно від того,
+    // скільки рівнів вкладеності (repo-name/guest/ чи просто /guest/).
+    function getGuestId() {
+      const segments = window.location.pathname
+        .split('/')
+        .filter(Boolean)
+        .filter(seg => !seg.includes('.html'));
+
+      if (segments.length === 0) return 'Невідомо';
+
+      return decodeURIComponent(segments[segments.length - 1]);
+    }
+
+    async function submitForm() {
+      const btn = document.getElementById('submitBtn');
+      const msg = document.getElementById('formMessage');
+
+      const attendance = document.querySelector('input[name="attendance"]:checked')?.value;
+      
+      const weddingQuestionExists = document.querySelector('input[name="weddingattendance"]') !== null;
+      const weddingattendance = weddingQuestionExists
+        ? document.querySelector('input[name="weddingattendance"]:checked')?.value
+        : 'Не запрошені';
+
+      const foodCheckboxes = document.querySelectorAll('input[name="food"]:checked');
+      const food = Array.from(foodCheckboxes).map(cb => cb.value).join(', ');
+
+      const wish = document.getElementById('wish').value.trim();
+
+      if (!attendance || (weddingQuestionExists && !weddingattendance)) {
+        msg.className = 'form-message error';
+        msg.textContent = 'Будь ласка, заповніть усі обов\'язкові поля.';
+        return;
+      }
+
+      btn.disabled = true;
+      btn.textContent = 'Надсилаємо…';
+      msg.className = 'form-message';
+
+      const guest = getGuestId();
+
+      const payload = new URLSearchParams({ guest, attendance, weddingattendance, food, wish,
+                                            timestamp: new Date().toLocaleString('uk-UA') });
+      try {
+        await fetch(APPS_SCRIPT_URL, {
+          method: 'POST',
+          mode: 'no-cors',
+          body: payload
+        });
+        msg.className = 'form-message success';
+        msg.textContent = '✨ Дякуємо! Ваша відповідь отримана. Чекаємо на вас!';
+        document.getElementById('surveyForm').querySelectorAll('input, textarea').forEach(el => {
+          if (el.type === 'checkbox' || el.type === 'radio') el.checked = false;
+          else el.value = '';
+        });
+      } catch (e) {
+        msg.className = 'form-message error';
+        msg.textContent = 'Помилка з\'єднання. Спробуйте ще раз або напишіть нам особисто.';
+        btn.disabled = false;
+        btn.textContent = 'Надіслати відповідь';
+      }
+    }
+  </script>
+</body>
+</html>
