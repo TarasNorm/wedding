@@ -349,7 +349,8 @@
       background: rgba(201,168,76,0.05);
     }
 
-    .radio-option input[type="radio"] {
+    .radio-option input[type="radio"],
+    .radio-option input[type="checkbox"] {
       accent-color: var(--gold);
       width: 20px; height: 20px;
       flex-shrink: 0;
@@ -650,7 +651,7 @@
         src="images/rings.jpg"
         alt="Весільний банкет"
         loading="eager"
-        decoding="async"
+        decoding="async">
     </div>
   </section>
 
@@ -694,19 +695,19 @@
           <label class="form-label">Харчові обмеження або алергії</label>
           <div class="radio-group">
             <label class="radio-option">
-              <input type="radio" name="food" value="Немає">
+              <input type="checkbox" name="food" value="Немає">
               <span>Немає</span>
             </label>
             <label class="radio-option">
-              <input type="radio" name="food" value="Вегетаріанське меню">
+              <input type="checkbox" name="food" value="Вегетаріанське меню">
               <span>🌿 Вегетаріанське меню</span>
             </label>
             <label class="radio-option">
-              <input type="radio" name="food" value="Веганське меню">
+              <input type="checkbox" name="food" value="Веганське меню">
               <span>🌱 Веганське меню</span>
             </label>
             <label class="radio-option">
-              <input type="radio" name="food" value="Безглютенове">
+              <input type="checkbox" name="food" value="Безглютенове">
               <span>🌾 Безглютенове</span>
             </label>
           </div>
@@ -785,13 +786,16 @@
       const btn = document.getElementById('submitBtn');
       const msg = document.getElementById('formMessage');
 
-      const name = document.getElementById('name').value.trim();
       const attendance = document.querySelector('input[name="attendance"]:checked')?.value;
-      const guests    = document.querySelector('input[name="guests"]:checked')?.value;
-      const food      = document.querySelector('input[name="food"]:checked')?.value;
+      const weddingattendance = document.querySelector('input[name="weddingattendance"]:checked')?.value;
+
+      // Харчові обмеження тепер чекбокси — можна відмітити декілька варіантів одразу
+      const foodCheckboxes = document.querySelectorAll('input[name="food"]:checked');
+      const food = Array.from(foodCheckboxes).map(cb => cb.value).join(', ');
+
       const wish = document.getElementById('wish').value.trim();
 
-      if (!name || !attendance || !guests || !food) {
+      if (!attendance || !weddingattendance) {
         msg.className = 'form-message error';
         msg.textContent = 'Будь ласка, заповніть усі обов\'язкові поля.';
         return;
@@ -801,13 +805,16 @@
       btn.textContent = 'Надсилаємо…';
       msg.className = 'form-message';
 
-      const payload = new URLSearchParams({ name, attendance, guests, food, wish,
+      const payload = new URLSearchParams({ attendance, weddingattendance, food, wish,
                                             timestamp: new Date().toLocaleString('uk-UA') });
       try {
         await fetch(APPS_SCRIPT_URL, { method: 'POST', body: payload });
         msg.className = 'form-message success';
         msg.textContent = '✨ Дякуємо! Ваша відповідь отримана. Чекаємо на вас!';
-        document.getElementById('surveyForm').querySelectorAll('input, textarea').forEach(el => el.value = '');
+        document.getElementById('surveyForm').querySelectorAll('input, textarea').forEach(el => {
+          if (el.type === 'checkbox' || el.type === 'radio') el.checked = false;
+          else el.value = '';
+        });
       } catch (e) {
         msg.className = 'form-message error';
         msg.textContent = 'Помилка з\'єднання. Спробуйте ще раз або напишіть нам особисто.';
