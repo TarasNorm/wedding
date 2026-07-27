@@ -21,12 +21,10 @@
       --text: #2e2212;
       --text-light: #6b5a3e;
       --rose: #c4857a;
-      /* fallback + сучасне значення висоти екрана */
       --vh100: 100vh;
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
-
     html { scroll-behavior: smooth; }
 
     body {
@@ -34,15 +32,13 @@
       color: var(--text);
       font-family: 'EB Garamond', Georgia, serif;
       overflow-x: hidden;
-      /* прибирає "затримку" 300мс перед реакцією на тап на touch-пристроях */
       touch-action: manipulation;
     }
 
-    /* ── HERO ── */
     .hero {
       position: relative;
       height: var(--vh100);
-      height: 100svh; /* коректна висота без стрибків через адресний рядок мобільного браузера */
+      height: 100svh;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -54,7 +50,7 @@
       inset: 0;
       background:
         linear-gradient(180deg, rgba(26,18,8,0.7) 0%, rgba(26,18,8,0.55) 50%, rgba(26,18,8,0.8) 100%),
-        url('/images/hedding.jpg') center/cover no-repeat;
+        url('/wedding/images/hedding.jpg') center/cover no-repeat;
       transform: translateZ(0) scale(1.05);
       will-change: transform;
     }
@@ -86,10 +82,7 @@
       text-shadow: 0 4px 40px rgba(0,0,0,0.4);
     }
 
-    .hero-title span {
-      display: block;
-      color: var(--gold);
-    }
+    .hero-title span { display: block; color: var(--gold); }
 
     .divider {
       display: flex;
@@ -99,11 +92,7 @@
       width: fit-content;
     }
     .divider-line { width: 80px; height: 1px; background: var(--gold); opacity: 0.7; }
-    .divider-diamond {
-      width: 8px; height: 8px;
-      border: 1px solid var(--gold);
-      transform: rotate(45deg);
-    }
+    .divider-diamond { width: 8px; height: 8px; border: 1px solid var(--gold); transform: rotate(45deg); }
 
     .hero-date {
       font-family: 'Cormorant Garamond', serif;
@@ -134,54 +123,22 @@
       background: linear-gradient(to bottom, var(--gold-light), transparent);
     }
 
-    /* ── STICKY SECTIONS ── */
-    .sticky-section {
-      display: flex;
-      min-height: 100vh;
-      position: relative;
-    }
+    .sticky-section { display: flex; min-height: 100vh; position: relative; }
 
-    /* LEFT IMAGE, RIGHT TEXT */
     .sticky-section.left-image .sticky-image-col {
-      position: sticky;
-      top: 0;
-      width: 50%;
-      height: 100vh;
-      flex-shrink: 0;
-      overflow: hidden;
+      position: sticky; top: 0; width: 50%; height: 100vh; flex-shrink: 0; overflow: hidden;
     }
-
     .sticky-section.left-image .scroll-text-col {
-      width: 50%;
-      padding: 10vh 6vw 15vh 6vw;
-      background: var(--ivory);
+      width: 50%; padding: 10vh 6vw 15vh 6vw; background: var(--ivory);
     }
-
-    /* RIGHT IMAGE, LEFT TEXT */
     .sticky-section.right-image .scroll-text-col {
-      width: 50%;
-      padding: 10vh 6vw 15vh 6vw;
-      background: var(--ivory);
-      order: 1;
+      width: 50%; padding: 10vh 6vw 15vh 6vw; background: var(--ivory); order: 1;
     }
-
     .sticky-section.right-image .sticky-image-col {
-      position: sticky;
-      top: 0;
-      width: 50%;
-      height: 100vh;
-      flex-shrink: 0;
-      overflow: hidden;
-      order: 2;
+      position: sticky; top: 0; width: 50%; height: 100vh; flex-shrink: 0; overflow: hidden; order: 2;
     }
+    .sticky-image-col img { width: 100%; height: 100%; object-fit: cover; }
 
-    .sticky-image-col img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    /* ── TEXT BLOCKS ── */
     .section-eyebrow {
       font-family: 'Cormorant Garamond', serif;
       font-style: italic;
@@ -201,12 +158,7 @@
       margin-bottom: 1.5rem;
     }
 
-    .section-divider {
-      width: 60px;
-      height: 1px;
-      background: var(--gold);
-      margin: 1.5rem 0;
-    }
+    .section-divider { width: 60px; height: 1px; background: var(--gold); margin: 1.5rem 0; }
 
     .section-body {
       font-size: clamp(1rem, 1.5vw, 1.2rem);
@@ -224,12 +176,7 @@
       border-left: 2px solid var(--gold);
       background: rgba(201,168,76,0.06);
     }
-
-    .info-block .icon {
-      font-size: 1.5rem;
-      flex-shrink: 0;
-    }
-
+    .info-block .icon { font-size: 1.5rem; flex-shrink: 0; }
     .info-block h4 {
       font-family: 'Great Vibes', cursive;
       font-size: 1.3rem;
@@ -237,21 +184,9 @@
       color: var(--gold-dark);
       margin-bottom: 0.3rem;
     }
+    .info-block p { font-size: 1rem; color: var(--text-light); line-height: 1.6; }
 
-    .info-block p {
-      font-size: 1rem;
-      color: var(--text-light);
-      line-height: 1.6;
-    }
-
-    /* ── SURVEY ── */
-    .survey-section {
-      background: var(--dark);
-      padding: 10vh 5vw;
-      position: relative;
-      overflow: hidden;
-    }
-
+    .survey-section { background: var(--dark); padding: 10vh 5vw; position: relative; overflow: hidden; }
     .survey-section::before {
       content: '';
       position: absolute;
@@ -260,13 +195,7 @@
         radial-gradient(ellipse 60% 50% at 20% 50%, rgba(201,168,76,0.08) 0%, transparent 70%),
         radial-gradient(ellipse 50% 60% at 80% 30%, rgba(196,133,122,0.06) 0%, transparent 70%);
     }
-
-    .survey-inner {
-      position: relative;
-      max-width: 680px;
-      margin: 0 auto;
-    }
-
+    .survey-inner { position: relative; max-width: 680px; margin: 0 auto; }
     .survey-title {
       font-family: 'Great Vibes', cursive;
       font-size: clamp(2.5rem, 5vw, 4rem);
@@ -274,7 +203,6 @@
       text-align: center;
       margin-bottom: 0.5rem;
     }
-
     .survey-sub {
       font-family: 'Cormorant Garamond', serif;
       font-style: italic;
@@ -285,10 +213,7 @@
       margin-bottom: 3rem;
     }
 
-    .form-group {
-      margin-bottom: 1.8rem;
-    }
-
+    .form-group { margin-bottom: 1.8rem; }
     .form-label {
       display: block;
       font-family: 'Great Vibes', cursive;
@@ -298,9 +223,7 @@
       margin-bottom: 0.6rem;
     }
 
-    .form-input,
-    .form-select,
-    .form-textarea {
+    .form-input, .form-select, .form-textarea {
       width: 100%;
       padding: 0.9rem 1.2rem;
       background: rgba(255,255,255,0.05);
@@ -308,33 +231,22 @@
       border-radius: 2px;
       color: var(--ivory);
       font-family: 'EB Garamond', serif;
-      /* мінімум 16px — інакше iOS Safari автоматично зумить сторінку при фокусі на полі */
       font-size: 16px;
       transition: border-color 0.3s, background 0.3s;
       outline: none;
     }
-
-    .form-input:focus,
-    .form-select:focus,
-    .form-textarea:focus {
+    .form-input:focus, .form-select:focus, .form-textarea:focus {
       border-color: var(--gold);
       background: rgba(255,255,255,0.08);
     }
-
     .form-select option { background: var(--dark); }
 
-    .radio-group {
-      display: flex;
-      flex-direction: column;
-      gap: 0.7rem;
-    }
-
+    .radio-group { display: flex; flex-direction: column; gap: 0.7rem; }
     .radio-option {
       display: flex;
       align-items: center;
       gap: 0.8rem;
       padding: 0.8rem 1.2rem;
-      /* мінімальна висота тап-зони 44px за рекомендаціями Apple/Google */
       min-height: 44px;
       border: 1px solid rgba(201,168,76,0.2);
       cursor: pointer;
@@ -342,24 +254,17 @@
       -webkit-tap-highlight-color: transparent;
       touch-action: manipulation;
     }
-
-    .radio-option:hover,
-    .radio-option:active {
+    .radio-option:hover, .radio-option:active {
       border-color: var(--gold);
       background: rgba(201,168,76,0.05);
     }
-
     .radio-option input[type="radio"],
     .radio-option input[type="checkbox"] {
       accent-color: var(--gold);
       width: 20px; height: 20px;
       flex-shrink: 0;
     }
-
-    .radio-option span {
-      color: var(--ivory);
-      font-size: 1rem;
-    }
+    .radio-option span { color: var(--ivory); font-size: 1rem; }
 
     .submit-btn {
       width: 100%;
@@ -377,17 +282,8 @@
       -webkit-tap-highlight-color: transparent;
       touch-action: manipulation;
     }
-
-    .submit-btn:hover,
-    .submit-btn:active {
-      background: var(--gold);
-      color: var(--dark);
-    }
-
-    .submit-btn:disabled {
-      opacity: 0.5;
-      cursor: not-allowed;
-    }
+    .submit-btn:hover, .submit-btn:active { background: var(--gold); color: var(--dark); }
+    .submit-btn:disabled { opacity: 0.5; cursor: not-allowed; }
 
     .form-message {
       margin-top: 1rem;
@@ -398,27 +294,15 @@
       font-size: 1.1rem;
       display: none;
     }
+    .form-message.success { color: var(--gold-light); border: 1px solid rgba(201,168,76,0.3); display: block; }
+    .form-message.error { color: var(--rose); border: 1px solid rgba(196,133,122,0.3); display: block; }
 
-    .form-message.success {
-      color: var(--gold-light);
-      border: 1px solid rgba(201,168,76,0.3);
-      display: block;
-    }
-
-    .form-message.error {
-      color: var(--rose);
-      border: 1px solid rgba(196,133,122,0.3);
-      display: block;
-    }
-
-    /* ── FOOTER ── */
     footer {
       background: var(--dark);
       border-top: 1px solid rgba(201,168,76,0.2);
       padding: 3rem 2rem;
       text-align: center;
     }
-
     footer p {
       font-family: 'Great Vibes', cursive;
       color: var(--gold-light);
@@ -426,91 +310,48 @@
       letter-spacing: 0.05em;
     }
 
-    /* ── ANIMATIONS ── */
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(30px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
+    @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
 
-    @keyframes pulse {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.4; }
-    }
+    .fade-in-up { opacity: 0; transform: translateY(24px); transition: opacity 0.8s ease, transform 0.8s ease; }
+    .fade-in-up.visible { opacity: 1; transform: translateY(0); }
 
-    .fade-in-up {
-      opacity: 0;
-      transform: translateY(24px);
-      transition: opacity 0.8s ease, transform 0.8s ease;
-    }
-
-    .fade-in-up.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* ── ПОВАГА ДО НАЛАШТУВАНЬ ДОСТУПНОСТІ ── */
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
       .hero-content, .fade-in-up, .scroll-hint { animation: none !important; transition: none !important; opacity: 1 !important; transform: none !important; }
       .hero-bg { transform: none !important; }
     }
 
-    /* ── RESPONSIVE (MOBILE) ── */
     @media (max-width: 768px) {
+      .hero-bg { background-position: 30% center; }
 
-      /* 1. Зсув фото в hero-блоці трохи правіше на телефоні,
-            на ПК фото лишається по центру (правило вище не чіпаємо) */
-      .hero-bg {
-        background-position: 30% center;
-      }
-
-      /* 2. На мобільному sticky-секції перетворюються на колонку:
-            спочатку ТЕКСТ, а фото йде ПІД ним окремим блоком нижче.
-            ВАЖЛИВО: контейнер має лишатись display:flex (не block) —
-            властивість order працює тільки у flex/grid-контейнерах,
-            інакше елементи показуються в порядку, як записані в HTML. */
-      .sticky-section {
-        flex-direction: column !important;
-      }
+      .sticky-section { flex-direction: column !important; }
 
       .sticky-section.left-image .scroll-text-col,
       .sticky-section.right-image .scroll-text-col {
         position: relative;
         width: 100%;
         padding: 3rem 6vw 2.5rem 6vw;
-        order: 0 !important; /* текст першим */
+        order: 0 !important;
         background: var(--ivory);
       }
 
       .sticky-section.left-image .sticky-image-col,
       .sticky-section.right-image .sticky-image-col {
-        position: relative; /* більше не sticky — картинка просто йде після тексту */
+        position: relative;
         width: 100%;
         height: 45vh;
         flex-shrink: 0;
-        order: 1 !important; /* фото другим, під текстом */
+        order: 1 !important;
         z-index: 1;
       }
 
-      .sticky-section.right-image .sticky-image-col {
-        clip-path: none !important;
-      }
+      .sticky-section.right-image .sticky-image-col { clip-path: none !important; }
 
-      /* 3. Менші відступи в info-block на вузьких екранах — на телефоні
-            попередні 1.5rem padding з'їдають забагато місця під текст */
-      .info-block {
-        padding: 1.1rem;
-        gap: 0.8rem;
-      }
-
-      /* 4. Форма — трохи менше вертикальних відступів між полями,
-            щоб довга анкета не розтягувалась на весь екран */
-      .form-group {
-        margin-bottom: 1.4rem;
-      }
+      .info-block { padding: 1.1rem; gap: 0.8rem; }
+      .form-group { margin-bottom: 1.4rem; }
     }
 
-    /* Дуже вузькі екрани (старі/маленькі телефони) */
     @media (max-width: 360px) {
       .hero-content { padding: 1.2rem; }
       .divider-line { width: 50px; }
@@ -537,14 +378,10 @@
     <div class="scroll-hint">Гортати</div>
   </section>
 
-  <!-- ═══════════ SECTION 1 — Left image, Right text ═══════════ -->
+  <!-- ═══════════ SECTION 1 ═══════════ -->
   <section class="sticky-section left-image">
     <div class="sticky-image-col">
-      <img
-        src="/images/littleus.jpg"
-        alt="Весілля"
-        loading="eager"
-        decoding="async">
+      <img src="/wedding/images/littleus.jpg" alt="Весілля" loading="eager" decoding="async">
     </div>
     <div class="scroll-text-col">
       <div class="fade-in-up">
@@ -552,64 +389,40 @@
         <h2 class="section-heading">Дорогі Рома і Тася!</h2>
         <div class="section-divider"></div>
       </div>
-      <p class="section-body fade-in-up">
-        Запрошуємо вас на наше весілля!
-      </p>
+      <p class="section-body fade-in-up">Запрошуємо вас на наше весілля!</p>
       <p class="section-body fade-in-up">
         Нам буде дуже приємно, якщо в цей особливий для нас день ви зможете бути поруч та розділити нашу радість.
       </p>
-		<div class="form-group">
-          <label class="form-label"><b>5 Вересня 2026р.</b></label>
-		</div>
+      <div class="form-group"><label class="form-label"><b>5 Вересня 2026р.</b></label></div>
       <div class="info-block fade-in-up">
         <div class="icon">✨</div>
-        <div>
-          <h4>Збір гостей</h4>
-          <p>15:30<br>Кафе «MARKÓ», вул. Софіївська 19, Київ</p>
-        </div>
-      </div>	
-		<div class="info-block fade-in-up">
+        <div><h4>Збір гостей</h4><p>15:30<br>Кафе «MARKÓ», вул. Софіївська 19, Київ</p></div>
+      </div>
+      <div class="info-block fade-in-up">
         <div class="icon">💍</div>
-        <div>
-          <h4>Церемонія</h4>
-          <p>16:00</p>
-        </div>
-      </div>		
+        <div><h4>Церемонія</h4><p>16:00</p></div>
+      </div>
       <div class="info-block fade-in-up">
         <div class="icon">🥂</div>
-        <div>
-          <h4>Фуршетний стіл</h4>
-          <p>16:30</p>
-        </div>
+        <div><h4>Фуршетний стіл</h4><p>16:30</p></div>
       </div>
-		<div class="info-block fade-in-up">
+      <div class="info-block fade-in-up">
         <div class="icon">🌿</div>
-        <div>
-          <h4>Завершення свята</h4>
-          <p>19:00</p>
-        </div>
-		</div>
-		<div class="form-group">
-          <label class="form-label"><b>6 Вересня 2026р.</b></label>
-		</div>
-		<div class="info-block fade-in-up">
-        <div class="icon">🕊️</div>
-        <div>
-          <h4>Вінчання</h4>
-          <p>Найрідніших запрошуємо розділити з нами особливу мить — наше вінчання, яке відбудеться о 15:00 в Михайлівському золотоверхому соборі.</p>
-        </div>
+        <div><h4>Завершення свята</h4><p>19:00</p></div>
       </div>
-		<div class="info-block fade-in-up">
+      <div class="form-group"><label class="form-label"><b>6 Вересня 2026р.</b></label></div>
+      <div class="info-block fade-in-up">
+        <div class="icon">🕊️</div>
+        <div><h4>Вінчання</h4><p>Найрідніших запрошуємо розділити з нами особливу мить — наше вінчання, яке відбудеться о 15:00 в Михайлівському золотоверхому соборі.</p></div>
+      </div>
+      <div class="info-block fade-in-up">
         <div class="icon">🍽️</div>
-        <div>
-          <h4>Обід</h4>
-          <p>Після церемонії будемо раді продовжити святкування за спільним обідом у кафе «Полтава».</p>
-        </div>
+        <div><h4>Обід</h4><p>Після церемонії будемо раді продовжити святкування за спільним обідом у кафе «Полтава».</p></div>
       </div>
     </div>
   </section>
 
-  <!-- ═══════════ SECTION 2 — Left text, Right image (enters as you scroll) ═══════════ -->
+  <!-- ═══════════ SECTION 2 ═══════════ -->
   <section class="sticky-section right-image" id="rightSection">
     <div class="scroll-text-col">
       <div class="fade-in-up">
@@ -618,40 +431,26 @@
         <div class="section-divider"></div>
       </div>
       <p class="section-body fade-in-up">
-        Для нас дуже важливо, щоб кожен гість почувався тепло і комфортно.<br>Ми підготували затишний вечір з гарною та спокійною музикою, смачною кухнею та 
-        незабутньою атмосферою.
+        Для нас дуже важливо, щоб кожен гість почувався тепло і комфортно.<br>Ми підготували затишний вечір з гарною та спокійною музикою, смачною кухнею та незабутньою атмосферою.
       </p>
-	<div class="info-block fade-in-up">
+      <div class="info-block fade-in-up">
         <div class="icon">🌿</div>
-        <div>
-          <h4>Дрескод</h4>
-          <p>Одягайтесь красиво - так, як вам відгукується, але з українським настроєм.<br>Вишиванки, силянки, гердани, крайки, хустки - усе вітається!<br>Можна міксувати з сучасним, головне - <strong>не чорний колір.</strong><br>Ми ж не на поминках, у нас свято!</p>
-        </div>
+        <div><h4>Дрескод</h4><p>Одягайтесь красиво - так, як вам відгукується, але з українським настроєм.<br>Вишиванки, силянки, гердани, крайки, хустки - усе вітається!<br>Можна міксувати з сучасним, головне - <strong>не чорний колір.</strong><br>Ми ж не на поминках, у нас свято!</p></div>
       </div>
-        <div class="info-block fade-in-up">
+      <div class="info-block fade-in-up">
         <div class="icon">🌻</div>
-        <div>
-          <h4>Квіти</h4>
-          <p>Любі наші, просимо вас <strong>не дарувати нам квіти</strong> - натомість ми організуємо збір на підтримку на ЗСУ, що зараз є важливіше.<br>Нехай наше свято стане ще однією нагодою зробити добру справу разом.</p>
-        </div>
+        <div><h4>Квіти</h4><p>Любі наші, просимо вас <strong>не дарувати нам квіти</strong> - натомість ми організуємо збір на підтримку на ЗСУ, що зараз є важливіше.<br>Нехай наше свято стане ще однією нагодою зробити добру справу разом.</p></div>
       </div>
       <div class="info-block fade-in-up">
         <div class="icon">💕</div>
-        <div>
-          <h4>Ми не такі як всі</h4>
-          <p>Наше весілля буде трохи не таким, як зазвичай. Ми не прагнемо дотримуватися всіх традицій чи створювати гучне святкування.<br>Натомість мріємо про теплий, затишний вечір у колі найдорожчих людей.<br><strong>Цей день</strong> — про нас, нашу історію, наші почуття та людей, яких ми хочемо бачити поруч.</p>
-        </div>
+        <div><h4>Ми не такі як всі</h4><p>Наше весілля буде трохи не таким, як зазвичай. Ми не прагнемо дотримуватися всіх традицій чи створювати гучне святкування.<br>Натомість мріємо про теплий, затишний вечір у колі найдорожчих людей.<br><strong>Цей день</strong> — про нас, нашу історію, наші почуття та людей, яких ми хочемо бачити поруч.</p></div>
       </div>
       <p class="section-body fade-in-up" style="margin-top:1rem; font-style:italic; color: var(--gold-dark);">
         «Найкращий подарунок — ваша присутність і щирість»
       </p>
     </div>
     <div class="sticky-image-col">
-      <img
-        src="/images/rings.jpg"
-        alt="Весільний банкет"
-        loading="eager"
-        decoding="async">
+      <img src="/wedding/images/rings.jpg" alt="Весільний банкет" loading="eager" decoding="async">
     </div>
   </section>
 
@@ -677,7 +476,7 @@
           </div>
         </div>
 
-		  <div class="form-group">
+        <div class="form-group">
           <label class="form-label">А на вінчання прийдете👉👈?</label>
           <div class="radio-group">
             <label class="radio-option">
@@ -710,24 +509,23 @@
               <input type="checkbox" name="food" value="Вино біле напівсолодке">
               <span>Вино біле напівсолодке</span>
             </label>
-			  <label class="radio-option">
+            <label class="radio-option">
               <input type="checkbox" name="food" value="Вино червоне сухе">
               <span>Вино червоне сухе</span>
             </label>
-			  <label class="radio-option">
+            <label class="radio-option">
               <input type="checkbox" name="food" value="Вино червоне напівсолодке">
               <span>Вино червоне напівсолодке</span>
             </label>
-			  </label>
-			  <label class="radio-option">
+            <label class="radio-option">
               <input type="checkbox" name="food" value="Пиво">
               <span>Пиво</span>
             </label>
-			  <label class="radio-option">
+            <label class="radio-option">
               <input type="checkbox" name="food" value="Сидр">
               <span>Сидр</span>
             </label>
-			  <label class="radio-option">
+            <label class="radio-option">
               <input type="checkbox" name="food" value="Коктейлі">
               <span>Кілька коктейлів на вибір (Катя обіцяє, що окрім Негроні буде ще щось)</span>
             </label>
@@ -754,17 +552,13 @@
   </footer>
 
   <script>
-    // ── Визначаємо, чи це touch-пристрій / вузький екран,
-    //    щоб не вантажити CPU на parallax там, де він майже непомітний ──
     const isSmallScreen = window.matchMedia('(max-width: 768px)').matches;
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const enableParallax = !isSmallScreen && !prefersReducedMotion;
 
-    // ── Parallax hero (throttled через requestAnimationFrame) ──
     if (enableParallax) {
       const heroBg = document.getElementById('heroBg');
       let ticking = false;
-
       window.addEventListener('scroll', () => {
         if (!ticking) {
           requestAnimationFrame(() => {
@@ -777,16 +571,12 @@
       }, { passive: true });
     }
 
-    // ── Reveal right image when section enters viewport ──
     const rightSection = document.getElementById('rightSection');
     const revealObserver = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) entry.target.classList.add('revealed');
-      });
+      entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('revealed'); });
     }, { threshold: 0.25 });
     revealObserver.observe(rightSection);
 
-    // ── Fade-in-up elements ──
     const fadeEls = document.querySelectorAll('.fade-in-up');
     const fadeObserver = new IntersectionObserver(entries => {
       entries.forEach((entry, i) => {
@@ -800,61 +590,50 @@
     fadeEls.forEach(el => fadeObserver.observe(el));
 
     // ── Google Sheets via Apps Script ──
-    // 🔧 ВСТАВТЕ СЮДИ URL вашого Web App (Google Apps Script)
     const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxmgy_lMzc9rrJ6IuNOHzSGh3RVsPFwFAYDkR08qa0cnf04Rpu10qG_Da-PPyhbmOCW/exec';
- 
+
     // ── Визначаємо гостя за шляхом URL ──
-    // Наприклад: https://tarasnorm.github.io/Roma_Tasya/  →  "Roma_Tasya"
-    // Наприклад: https://tarasnorm.github.io/Ivan_Petrenko/  →  "Ivan_Petrenko"
+    // Приклад: https://tarasnorm.github.io/wedding/Roma_Tasya/  →  "Roma_Tasya"
+    // Бере ОСТАННІЙ сегмент шляху — тому працює незалежно від того,
+    // скільки рівнів вкладеності (repo-name/guest/ чи просто /guest/).
     function getGuestId() {
-      // pathname виглядає як "/Roma_Tasya/" або "/Roma_Tasya/index.html"
       const segments = window.location.pathname
         .split('/')
-        .filter(Boolean); // прибираємо порожні частини від зайвих слешів
- 
+        .filter(Boolean)
+        .filter(seg => !seg.includes('.html'));
+
       if (segments.length === 0) return 'Невідомо';
- 
-      // Беремо перший сегмент шляху (назву репозиторію/папки гостя)
-      let guest = decodeURIComponent(segments[0]);
- 
-      // Якщо це файл типу index.html, а не назва папки — теж підстрахуємось
-      if (guest.includes('.html')) guest = 'Невідомо';
- 
-      return guest;
+
+      return decodeURIComponent(segments[segments.length - 1]);
     }
- 
+
     async function submitForm() {
       const btn = document.getElementById('submitBtn');
       const msg = document.getElementById('formMessage');
- 
+
       const attendance = document.querySelector('input[name="attendance"]:checked')?.value;
       const weddingattendance = document.querySelector('input[name="weddingattendance"]:checked')?.value;
- 
-      // Харчові обмеження тепер чекбокси — можна відмітити декілька варіантів одразу
+
       const foodCheckboxes = document.querySelectorAll('input[name="food"]:checked');
       const food = Array.from(foodCheckboxes).map(cb => cb.value).join(', ');
- 
+
       const wish = document.getElementById('wish').value.trim();
- 
+
       if (!attendance || !weddingattendance) {
         msg.className = 'form-message error';
         msg.textContent = 'Будь ласка, заповніть усі обов\'язкові поля.';
         return;
       }
- 
+
       btn.disabled = true;
       btn.textContent = 'Надсилаємо…';
       msg.className = 'form-message';
- 
+
       const guest = getGuestId();
- 
+
       const payload = new URLSearchParams({ guest, attendance, weddingattendance, food, wish,
                                             timestamp: new Date().toLocaleString('uk-UA') });
       try {
-        // 'no-cors' — Google Apps Script не повертає CORS-заголовки,
-        // тому браузер не дозволяє прочитати відповідь. Але запит
-        // все одно доходить і рядок додається в таблицю. Без цього
-        // режиму fetch кидає помилку, навіть якщо все відправилось успішно.
         await fetch(APPS_SCRIPT_URL, {
           method: 'POST',
           mode: 'no-cors',
@@ -867,8 +646,6 @@
           else el.value = '';
         });
       } catch (e) {
-        // Сюди потрапляємо лише якщо запит взагалі не пішов
-        // (немає інтернету, невірний URL скрипта тощо)
         msg.className = 'form-message error';
         msg.textContent = 'Помилка з\'єднання. Спробуйте ще раз або напишіть нам особисто.';
         btn.disabled = false;
