@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://images.unsplash.com">
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=EB+Garamond:ital@0;1&display=swap" rel="stylesheet">
-
+ 
   <style>
     :root {
       --cream: #f5f0e8;
@@ -411,6 +411,15 @@
         <div class="icon">🌿</div>
         <div><h4>Завершення свята</h4><p>19:00</p></div>
       </div>
+      <div class="form-group"><label class="form-label"><b>6 Вересня 2026р.</b></label></div>
+      <div class="info-block fade-in-up">
+        <div class="icon">🕊️</div>
+        <div><h4>Вінчання</h4><p>Найрідніших запрошуємо розділити з нами особливу мить — наше вінчання, яке відбудеться о 15:00 в Михайлівському золотоверхому соборі.</p></div>
+      </div>
+      <div class="info-block fade-in-up">
+        <div class="icon">🍽️</div>
+        <div><h4>Обід</h4><p>Після церемонії будемо раді продовжити святкування за спільним обідом у кафе «Musafir», вул. Богдана Хмельницького 3б, Київ.</p></div>
+      </div>
     </div>
   </section>
 
@@ -455,7 +464,7 @@
       <div id="surveyForm">
 
         <div class="form-group">
-          <label class="form-label">Чи будеш ти присутня?</label>
+          <label class="form-label">Чи будеш ти присутній?</label>
           <div class="radio-group">
             <label class="radio-option">
               <input type="radio" name="attendance" value="Так">
@@ -464,6 +473,20 @@
             <label class="radio-option">
               <input type="radio" name="attendance" value="Ні">
               <span>😔 На жаль, ні</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">А на вінчання прийдеш👉👈?</label>
+          <div class="radio-group">
+            <label class="radio-option">
+              <input type="radio" name="weddingattendance" value="Так">
+              <span>🕊️ Так, з радістю!</span>
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="weddingattendance" value="Ні">
+              <span>😔 Ні (беру гріх на душу)</span>
             </label>
           </div>
         </div>
@@ -590,18 +613,14 @@
       const msg = document.getElementById('formMessage');
 
       const attendance = document.querySelector('input[name="attendance"]:checked')?.value;
-      
-      const weddingQuestionExists = document.querySelector('input[name="weddingattendance"]') !== null;
-      const weddingattendance = weddingQuestionExists
-        ? document.querySelector('input[name="weddingattendance"]:checked')?.value
-        : 'Не запрошені';
+      const weddingattendance = document.querySelector('input[name="weddingattendance"]:checked')?.value;
 
       const foodCheckboxes = document.querySelectorAll('input[name="food"]:checked');
       const food = Array.from(foodCheckboxes).map(cb => cb.value).join(', ');
 
       const wish = document.getElementById('wish').value.trim();
 
-      if (!attendance || (weddingQuestionExists && !weddingattendance)) {
+      if (!attendance || !weddingattendance) {
         msg.className = 'form-message error';
         msg.textContent = 'Будь ласка, заповніть усі обов\'язкові поля.';
         return;
